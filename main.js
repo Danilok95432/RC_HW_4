@@ -1,8 +1,9 @@
 import { Slider } from "./slider.mjs";
 import { View } from "./view.mjs";
 
-let intro = new View(false)
-intro.runIntro()
+let view = new View(false)
+view.runIntro()
+view.scrollUp()
 
 let nextSkip = 0
 
