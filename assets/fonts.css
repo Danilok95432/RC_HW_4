@@ -1,0 +1,34 @@
+@font-face {
+    font-family: Intro;
+    src: url(fonts/Intro.otf);
+}
+
+@font-face {
+    font-family: IntroLight;
+    src: url(fonts/IntroDemoCond-LightCAPS.otf);
+}
+
+@font-face {
+    font-family: IntroBlack;
+    src: url(fonts/IntroDemoCond-BlackCAPS.otf);
+}
+
+@font-face {
+    font-family: ChakraLight;
+    src: url(fonts/ChakraPetch-Light.ttf);
+}
+
+@font-face {
+    font-family: ChakraRegular;
+    src: url(fonts/ChakraPetch-Regular.ttf);
+}
+
+@font-face {
+    font-family: ChakraMedium;
+    src: url(fonts/ChakraPetch-Medium.ttf);
+}
+
+@font-face {
+    font-family: ChakraBold;
+    src: url(fonts/ChakraPetch-Bold.ttf);
+}

@@ -1,0 +1,260 @@
+@media screen and (max-width: 426px) {
+    #title-block{
+        gap: 0;
+    }
+
+    #title{
+        padding: 18px;
+    }
+
+    #subtitle{
+        width: 100%;
+        padding: 18px;
+    }
+
+    #card{
+        width: 90%;
+        padding: 12px;
+    }
+
+    .slider img{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #card{
+        width: 90%;
+        padding: 12px;
+    }
+
+    .slider img{
+        max-height: 300px;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100%;
+    height: 100%;
+    background: #1A181B;
+}
+
+.intro-section{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title-intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.title-intro h1{
+    color: #2CDA9D; /* #fde7d7  #2CDA9D*/
+    font-size: 64px;
+    text-shadow: 2px 5px 0px #000000;
+    text-align: center;
+    font-family: Intro;
+}
+
+.title-intro h2{
+    display: block;
+    width: 400px;
+    color: #2CDA9D; /* #fde7d7  #2CDA9D*/
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 117%;
+    white-space: 2px;
+    text-align: center;
+    font-family: IntroLight;
+}
+
+.start-btn{
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    padding: 12px;
+    font-family: IntroBlack;
+    font-size: 16px;
+    border: none;
+    background: #2CDA9D; /* #2CDA9D */
+    transition: all 0.3s ease-in-out;
+}
+
+.start-btn:hover{
+    background-image: none;
+    background-color: #97F9F9;
+    scale: 1.1;
+}
+
+#header-main{
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+header h1{
+    color: #2CDA9D;
+    font-size: 32px;
+    text-shadow: 2px 5px 0px #000000;
+    text-align: center;
+    font-family: Intro;
+    padding: 24px;
+}
+
+.main-section{
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.scroll-element{
+    width: 600px;
+    background: #fff;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+}
+
+.header-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: ChakraRegular;
+}
+
+.brand{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.title-product{
+    display: block;
+    font-size: 32px;
+    margin: auto;
+    font-family: ChakraMedium;
+}
+
+.category-product{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.slider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrapper{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.prev-btn{
+    position: absolute;
+    top: 45%;
+    left: -10px;
+    padding: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.next-btn{
+    position: absolute;
+    top: 45%;
+    right: -10px;
+    padding: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+
+.slider-img{
+    width: 100%;
+    transform: translateX();
+    transition: all 0.3s ease-in-out;
+}
+
+.rating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-family: ChakraBold;
+    margin: auto;
+}
+
+.description-product{
+    text-align: center;
+    font-size: 18px;
+    font-family: ChakraMedium;
+}
+
+.buy-btn{
+    width: 200px;
+    height: 60px;
+    border-radius: 11px;
+    background: #1A181B;
+    border: none;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+    color: white;
+}
+
+.buy-btn:hover{
+    background: #00FEA5;
+    scale: 1.1;
+    color: black;
+}
+
+.active{
+    background: #3E8989;
+}
+
+.price{
+    text-align: center;
+    font-family: ChakraBold;
+    font-size: 32px;
+}
