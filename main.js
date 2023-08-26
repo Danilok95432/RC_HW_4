@@ -7,6 +7,7 @@ view.scrollUp()
 
 let nextSkip = 0
 
+
 const infinteObserver = new IntersectionObserver(
     ([entry], observer) => {
     if (entry.isIntersecting) {
@@ -19,13 +20,14 @@ const infinteObserver = new IntersectionObserver(
 
 
 const loadNewCards = (skip = 0) => {
+    let slider;
     fetch(`https://dummyjson.com/products?limit=5&skip=${skip}`)
     .then((res) => res.json())
     .then((cards) => {
         let mainPage = document.querySelector('.main-section')
         cards.products.forEach(product => {
             const card = document.createElement('figure')
-            const slider = new Slider(product.images, 0, product.images.length)
+            slider = new Slider(product.images, 0)
             card.innerHTML = `
             <div class='card'>
                 <div class='header-card'>
@@ -52,12 +54,12 @@ const loadNewCards = (skip = 0) => {
             card.className = 'scroll-element'
             card.setAttribute("id", 'card')
             mainPage.append(card)
-            slider.control()
+            
         });
-
+        slider.control(view.getWrapperWidth())
         const lastCard = document.querySelector(".scroll-element:last-child");
         if (lastCard) {
-        infinteObserver.observe(lastCard);
+            infinteObserver.observe(lastCard);
         }
     })
     .catch(console.error);

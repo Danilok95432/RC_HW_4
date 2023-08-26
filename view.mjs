@@ -4,6 +4,7 @@ let header = document.getElementById('header-main')
 let mainSection = document.querySelector('.main-section')
 
 
+
 export class View{
     constructor(){
         
@@ -13,7 +14,8 @@ export class View{
         startBtn.addEventListener('click', () => {
             introBlock.style.display = 'none'
             header.style.opacity = '1'
-            mainSection.style.display = 'flex'
+            mainSection.style.visibility = 'visible'
+            mainSection.style.position = 'unset'
         })  
     }
 
@@ -37,6 +39,12 @@ export class View{
             }
             
         })
+    }
+
+    getWrapperWidth(){
+        let wrapper = document.querySelectorAll('.wrapper')
+        let param = wrapper[0].getBoundingClientRect().width
+        return param
     }
 }
 
