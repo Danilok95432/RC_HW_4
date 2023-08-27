@@ -57,6 +57,7 @@ const loadNewCards = (skip = 0) => {
             
         });
         slider.control(view.getWrapperWidth())
+        slider.dragControl(view.getWrapperWidth())
         const lastCard = document.querySelector(".scroll-element:last-child");
         if (lastCard) {
             infinteObserver.observe(lastCard);

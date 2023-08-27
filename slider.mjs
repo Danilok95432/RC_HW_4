@@ -69,4 +69,51 @@ export class Slider{
             })
         }
    }
+
+   dragControl(wrapperWidth){
+        let wrapper = document.querySelectorAll('.wrapper')
+        let isDown = false;
+        let startX;
+        let prevWrapper = 0;
+        let scrollLeft = 0;
+        for(let i = 0; i < wrapper.length; i++){
+            wrapper[i].addEventListener('touchstart', (e) => {
+                isDown = true
+                wrapper[i].classList.add('active')
+                let touchobj = e.changedTouches[0]   
+                startX = parseInt(touchobj.clientX)  
+                console.log(startX)
+                e.preventDefault()
+            })
+            wrapper[i].addEventListener('touchend', (e) => {
+                isDown = false
+                wrapper[i].classList.remove('active')
+
+                e.preventDefault()
+            })
+            wrapper[i].addEventListener('touchmove', (e) => {
+                let touchobj = e.changedTouches[0] 
+                let dist = parseInt(touchobj.clientX) - startX
+                wrapper[i].children[this.currentImg].style.transform = `translateX(${scrollLeft + dist}px)`
+                if(Math.abs(dist) > (wrapperWidth/2)){
+                    if(i!=prevWrapper) this.currentImg = 0
+                    if( (this.currentImg + 1) <= (wrapper[i].childElementCount - 1))
+                    {
+                        scrollLeft = (-1) * (wrapperWidth) * (this.currentImg + 1)
+                        wrapper[i].children[this.currentImg].style.transform = `translateX(${-1*(wrapperWidth) *(this.currentImg + 1)}px)`
+                        wrapper[i].children[this.currentImg + 1].style.transform = `translateX(${-1*(wrapperWidth) * (this.currentImg + 1)}px)`
+                    }
+                    else{
+                        wrapper[i].children[0].style.transform = `translateX(${0}px)`
+                        wrapper[i].children[this.currentImg].style.transform = `translateX(${-1*(wrapperWidth) * (this.currentImg + 1)}px)`
+                        this.currentImg = -1
+                    }
+                    this.currentImg++
+                    prevWrapper = i
+                }
+                    
+                e.preventDefault()
+            })
+        }
+   }
 }

@@ -6,9 +6,7 @@ let mainSection = document.querySelector('.main-section')
 
 
 export class View{
-    constructor(){
-        
-    }
+    constructor(){}
 
     runIntro(){
         startBtn.addEventListener('click', () => {
