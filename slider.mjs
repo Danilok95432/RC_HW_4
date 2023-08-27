@@ -50,7 +50,15 @@ export class Slider{
                 }
                 this.currentImg--
                 prevWrapper = i
-                
+                if(this.directionScroll())
+                {
+                    if(wrapper[i-1])
+                        this.sliderObserve(wrapper[i-1], wrapper[i])
+                }
+                else{
+                    if(wrapper[i+1])
+                        this.sliderObserve(wrapper[i+1], wrapper[i])
+                }
             })
             nextBtn[i].addEventListener('click', (e) => {
                 if(i!=prevWrapper) this.currentImg = 0
@@ -66,9 +74,18 @@ export class Slider{
                 }
                 this.currentImg++
                 prevWrapper = i
-            })
+                if(this.directionScroll())
+                {
+                    if(wrapper[i-1])
+                        this.sliderObserve(wrapper[i-1], wrapper[i])
+                }
+                else{
+                    if(wrapper[i+1])
+                        this.sliderObserve(wrapper[i+1], wrapper[i])
+                }
+            })   
         }
-   }
+    }
 
    dragControl(wrapperWidth){
         let wrapper = document.querySelectorAll('.wrapper')
@@ -92,7 +109,6 @@ export class Slider{
                 let dist = parseInt(touchobj.clientX) - startX
                 if(i!=prevWrapper) this.currentImg = 0
                 wrapper[i].children[this.currentImg].style.transform = `translateX(${scroll + dist}px)`
-                console.log(Math.abs(dist) , (wrapperWidth/20))
                 if(Math.abs(dist) > (wrapperWidth/20)){
                     if(dist < 0){
                         if(i!=prevWrapper) this.currentImg = 0
@@ -128,11 +144,52 @@ export class Slider{
                         this.currentImg--
                         prevWrapper = i
                     }
-                    
+                    if(this.directionScroll())
+                    {
+                        if(wrapper[i-1])
+                            this.sliderObserve(wrapper[i-1], wrapper[i])
+                    }
+                    else{
+                        if(wrapper[i+1])
+                            this.sliderObserve(wrapper[i+1], wrapper[i])
+                    }
                 }
                     
                 e.preventDefault()
             })
         }
+   }
+
+   sliderObserve(obj, prevObj){
+        const sliderObserver = new IntersectionObserver(
+            ([entry], observer) => {
+            if (entry.isIntersecting) {
+                observer.unobserve(entry.target);
+                this.refreshImages(prevObj)
+                this.currentImg = 0
+            }
+            },
+            { threshold: 0.8 }
+        );
+
+        if (obj) {
+            sliderObserver.observe(obj);
+        }
+   }
+
+   refreshImages(obj){
+        for(let j = 0; j < obj.childElementCount; j++)
+            obj.children[j].style.transform = `translateX(${0}px)`
+   }
+
+   directionScroll(){
+    let flag;
+        document.addEventListener('wheel', function(e){
+            if(e.deltaY > 0){
+                flag = false
+            }
+            else flag = true
+            return flag
+        })
    }
 }
